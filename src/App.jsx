@@ -5,10 +5,12 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 
 import {Navbar, Footer, Sidebar, ThemeSettings} from './components'
 import {Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, Line} from "./pages"
+
+import { useStateContext } from './contexts/ContextProvider'
 import './scss/App.scss'
 
 function App() {
-  const activeMenu = false;
+  const { activeMenu } = useStateContext()
 
   return (
     <div className='app-container'>
@@ -34,8 +36,8 @@ function App() {
         )}
         {/* Navbar */}
         <div className={
-          `navbar-container dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu ? "active  md:ml-72" : "flex-2"}`
-          }>
+          `navbar-container dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu ? "active" : ""}`
+          } style={activeMenu ? {marginLeft: "19.5rem"} : {marginLeft: "0"}}>
             <div className='navbar md:static bg-main-bg dark:bg-main-dark-bg'>
               <Navbar />
             </div>
